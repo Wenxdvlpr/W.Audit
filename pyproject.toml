@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rivet-audit"
+version = "0.4.0b1"
+description = "Local-first, evidence-led security auditing for source repositories"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+authors = [{name = "Wenxgji1fx — Артём"}]
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/Wenxdvlpr/W.Audit"
+
+[project.scripts]
+rivet = "rivet.cli:main"
+security-audit = "rivet.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+rivet = ["rules/*.yml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

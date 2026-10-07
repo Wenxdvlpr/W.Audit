@@ -1,0 +1,7 @@
+rules:
+  - id: rivet.python.subprocess-shell
+    languages: [python]
+    severity: WARNING
+    message: subprocess shell=True requires input review
+    patterns:
+      - pattern: subprocess.run(..., shell=True, ...)

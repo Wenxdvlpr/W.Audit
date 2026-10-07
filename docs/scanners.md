@@ -1,0 +1,7 @@
+# Optional scanners
+
+`rivet doctor` reports `AVAILABLE` with version, `NOT_INSTALLED` or `PLANNED` with installation links for Semgrep, Bandit, Gitleaks and OSV-Scanner. `--external` explicitly enables installed tools. W.Audit does not install or download them during an audit. Semgrep uses the bundled local rule only. Bandit scans Python source. Gitleaks checks Git history when the audit root is a Git repository. OSV-Scanner v2 uses `scan source`, may use the network and is disabled with `--offline`; Python/PyPI SCA remains supported, while npm SCA is experimental. External tools are skipped when include/exclude filters are active, because those filters cannot yet be enforced across every adapter.
+
+Scanner failures do not erase built-in results. Report coverage records `COMPLETED`, `DISABLED`, `NOT_INSTALLED`, `FAILED`, `TIMEOUT` or `SKIPPED`. Scanner output is untrusted; normalized findings omit raw code and credential values. For hostile repositories, run third-party scanners in an isolated environment without host credentials.
+
+Previously tested on 2026-10-07: Semgrep 1.179.0, Bandit 1.9.4, Gitleaks 8.30.1 and OSV-Scanner 2.6.0. `tests/test_real_scanners.py` runs installed binaries; the online OSV case requires `RIVET_TEST_ONLINE_OSV=1`. The adapters target these tested major CLI formats and fail visibly on malformed output. OSV SCA findings record advisory IDs, package version, fixed version when available and `UNKNOWN` reachability; W.Audit does not prove exploitability or dependency directness.

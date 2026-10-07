@@ -1,0 +1,21 @@
+name: Rivet Security Audit
+description: Offline source security checks with Markdown, JSON, SARIF and HTML reports
+inputs:
+  target:
+    description: Repository path to audit
+    required: false
+    default: .
+  fail-on:
+    description: none, low, medium or high
+    required: false
+    default: high
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      env:
+        RIVET_TARGET: ${{ inputs.target }}
+        RIVET_FAIL_ON: ${{ inputs.fail-on }}
+      run: |
+        python3 -m pip install --no-deps "$GITHUB_ACTION_PATH"
+        rivet scan "$RIVET_TARGET" --offline --exclude .rivet-tool --out "$GITHUB_WORKSPACE/security-audit-output" --fail-on "$RIVET_FAIL_ON"

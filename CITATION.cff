@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use W.Audit, please cite this software."
+title: W.Audit
+type: software
+authors:
+  - name: "Wenxgji1fx — Артём"
+version: 0.4.0b1
+date-released: "2026-10-07"
+license: Apache-2.0
+repository-code: https://github.com/Wenxdvlpr/W.Audit

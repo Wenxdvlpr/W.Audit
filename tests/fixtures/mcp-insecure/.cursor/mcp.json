@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "shell": {"command": "bash", "args": ["-c", "echo fixture"]},
+    "files": {"command": "npx", "args": ["@modelcontextprotocol/server-filesystem", "/"]},
+    "remote": {"url": "http://example.invalid/mcp"}
+  }
+}

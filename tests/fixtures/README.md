@@ -1,0 +1,3 @@
+# Intentional test fixtures
+
+Fixtures in this directory are synthetic test inputs. Directories named `*-insecure`, `*-secure`, `sca-*-vulnerable`, `api-openapi`, and individual vulnerable examples are marked **TEST_FIXTURE / INTENTIONAL**: they exercise expected detections and are not part of Rivet's production source or a measure of vulnerabilities in Rivet itself. `secure-reference`, `fastapi-secure` and `sca-npm-clean`/`sca-python-clean` are expected clean comparison fixtures. SCA fixtures pin deliberately vulnerable or clean dependency versions; they are data only and must not be installed. Secrets, if present, are fake test values.

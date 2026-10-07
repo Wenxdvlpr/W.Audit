@@ -1,0 +1,18 @@
+include LICENSE NOTICE README.md CITATION.cff CHANGELOG.md
+include AUTHORS.md CONTRIBUTING.md SECURITY.md TRADEMARKS.md PROJECT_ORIGIN.md
+include AGENTS.md CLAUDE.md AGENT_SECURITY_GUIDE.md action.yml
+graft src
+graft tests
+graft docs
+graft .github
+global-exclude .DS_Store *.py[cod] *.log security-report.* *.zip *.whl *.tar.gz
+prune build
+prune dist
+prune .venv
+prune venv
+prune .pytest_cache
+prune .mypy_cache
+prune .ruff_cache
+prune .cache
+prune .tox
+prune .nox

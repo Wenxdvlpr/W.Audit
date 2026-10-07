@@ -1,0 +1,11 @@
+# Architecture and development phases
+
+Rivet treats the audit target as hostile data. The CLI validates a root directory, walks it without following symlinks, builds a project profile, runs bounded built-in checks and optional scanner adapters, normalizes findings, then writes four report formats. No target code is executed. Findings carry a stable fingerprint, evidence, confidence, severity and verification advice. Baselines compare fingerprints across runs.
+
+Modules: `walk` owns path and size limits; `discovery` classifies the repository; `checks`, `secrets`, `taint`, `auth`, `routes`, `ai`, and `vibe` hold built-in analyzers; `adapters` runs installed scanners through a registry with argument arrays and timeouts; `dynamic` holds the opt-in HEAD baseline; `remediation` classifies fix work without editing files; `model` normalizes and deduplicates findings; `report` serializes escaped outputs; `cli` orchestrates. Scanner adapters are optional and fail independently. The report records every skipped or failed check.
+
+Implemented in v0.3 alpha: selected Python and JavaScript source checks, redacted secret patterns and entropy candidates, bounded same-file Python flows, authentication and route heuristics, Docker/IaC/CI/AI/MCP-config/vibe checks, real-binary-tested Semgrep/Bandit/Gitleaks/OSV-Scanner adapters, limited offline CycloneDX SBOM, four reports, baseline comparison, strict JSON config, offline mode, explicit pinned-IP HEAD-only dynamic check, read-only remediation plan, verification rescan, GitHub Action, fixtures and tests. Adapters run only when explicitly selected with `--external`; OSV-Scanner is disabled offline.
+
+Planned, unsupported: cross-file interprocedural data flow, credential validation, autonomous AI review or fixes, broad API dynamic tests, broad ecosystem SBOM generation, cloud account inspection, mobile binary analysis, CodeQL, comprehensive language-specific SAST, reachability proof, and Git history scanning without Gitleaks. Profiles select implemented checks and must not be read as full coverage of a technology.
+
+Phase order: architecture/threat model → CLI/discovery → built-in checks → adapters → normalization/reports → baseline/CI → fixtures/self-audit. Each completed stage has focused tests; the planned items remain outside v0.3 alpha.
